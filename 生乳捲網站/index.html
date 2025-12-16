@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>生乳捲訂購網</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Poppins','Noto Sans TC',sans-serif; background-color: #FFF8F0; }
+    .hero { background: linear-gradient(135deg,#F6C1CC,#FFE3EC); padding:100px 20px; text-align:center; border-radius:0 0 60px 60px; }
+    .hero h1{ font-weight:600; font-size:3rem; }
+    .btn-sweet{ background-color:#D88C9A; color:#fff; border-radius:30px; padding:10px 25px; }
+    .card{ border:none; border-radius:20px; box-shadow:0 8px 20px rgba(0,0,0,0.08); transition: transform .3s; }
+    .card:hover{ transform: translateY(-8px); }
+    footer{ background-color:#F6C1CC; color:#fff; text-align:center; padding:20px; }
+    .cart-modal{ position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); display:none; justify-content:center; align-items:center; z-index:10000; }
+    .cart-content{ background:#fff; padding:20px; border-radius:15px; max-width:500px; width:90%; max-height:80%; overflow:auto; }
+    .cart-content h3{ text-align:center; margin-bottom:15px; }
+    .cart-item{ display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; }
+    .cart-item input{ width:50px; }
+    #cartBtn{ position:fixed; top:20px; right:20px; z-index:9999; border-radius:50px; padding:10px 20px; }
+    #cartCount{ background:red; color:#fff; border-radius:50%; font-size:12px; width:20px; height:20px; display:flex; align-items:center; justify-content:center; position:absolute; top:-5px; right:-5px; }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg shadow-sm bg-white">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="#">Fresh Roll</a>
+    <ul class="navbar-nav ms-auto">
+      <li class="nav-item"><a class="nav-link" href="#menu">菜單</a></li>
+      <li class="nav-item"><a class="nav-link" href="#order">訂購</a></li>
+    </ul>
+  </div>
+</nav>
+
+<button id="cartBtn" class="btn btn-sweet" onclick="showCart()">
+  購物車 <span id="cartCount">0</span>
+</button>
+
+<section class="hero">
+  <h1>生乳捲訂購網站</h1>
+  <p>濃郁生乳・入口即化的幸福滋味</p>
+  <a href="#menu" class="btn btn-sweet mt-3">查看菜單</a>
+</section>
+
+<section id="menu" class="container py-5">
+  <h2 class="text-center fw-bold mb-4">生乳捲菜單</h2>
+  <div class="row g-4">
+    <div class="col-md-4"><div class="card text-center p-3"><img src="images/roll1.jpg" alt="原味" style="width:120px;"><h5 class="mt-2">原味生乳捲</h5><p>NT$330</p><p>濃郁奶香，口感細緻滑順</p></div></div>
+    <div class="col-md-4"><div class="card text-center p-3"><img src="images/roll2.jpg" alt="巧克力" style="width:120px;"><h5>巧克力生乳捲</h5><p>NT$330</p><p>可可香氣濃厚，甜而不膩</p></div></div>
+    <div class="col-md-4"><div class="card text-center p-3"><img src="images/roll3.jpg" alt="抹茶" style="width:120px;"><h5>抹茶生乳捲</h5><p>NT$330</p><p>日式抹茶風味，微苦回甘</p></div></div>
+    <div class="col-md-4"><div class="card text-center p-3"><img src="images/roll4.jpg" alt="提拉米蘇" style="width:120px;"><h5>提拉米蘇生乳捲</h5><p>NT$499</p><p>咖啡與可可交織的濃郁層次</p></div></div>
+    <div class="col-md-4"><div class="card text-center p-3"><img src="images/roll5.jpg" alt="芋泥" style="width:120px;"><h5>芋泥生乳捲</h5><p>NT$499</p><p>香甜芋泥，口感綿密不膩</p></div></div>
+    <div class="col-md-4"><div class="card text-center p-3"><img src="images/roll6.jpg" alt="草莓" style="width:120px;"><h5>草莓生乳捲</h5><p>NT$499</p><p>新鮮草莓，酸甜清爽</p></div></div>
+  </div>
+</section>
+
+<section id="order" class="container py-5">
+  <h2 class="text-center fw-bold mb-4">線上訂購</h2>
+  <div class="row g-4">
+    <div class="col-md-6"><h5>選擇商品</h5><div id="productList"></div></div>
+    <div class="col-md-6">
+      <h5>訂購資料</h5>
+      <form id="orderForm">
+        <div class="mb-3"><label>姓名</label><input type="text" class="form-control" id="customerName" required></div>
+        <div class="mb-3"><label>電話</label><input type="tel" class="form-control" id="customerPhone" required></div>
+        <button type="submit" class="btn btn-sweet w-100">送出訂購</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<div class="cart-modal" id="cartModal">
+  <div class="cart-content">
+    <h3>購物車</h3>
+    <div id="cartItems"></div>
+    <p class="fw-bold">總價: NT$ <span id="cartTotal">0</span></p>
+    <button class="btn btn-sweet w-100" onclick="closeCart()">關閉</button>
+  </div>
+</div>
+
+<footer>© 2025 Fresh Roll 生乳捲</footer>
+
+<script>
+const products=[
+{name:"原味生乳捲", price:330, img:"images/roll1.jpg"},
+{name:"巧克力生乳捲", price:330, img:"images/roll2.jpg"},
+{name:"抹茶生乳捲", price:330, img:"images/roll3.jpg"},
+{name:"提拉米蘇生乳捲", price:499, img:"images/roll4.jpg"},
+{name:"芋泥生乳捲", price:499, img:"images/roll5.jpg"},
+{name:"草莓生乳捲", price:499, img:"images/roll6.jpg"}
+];
+const productList=document.getElementById('productList');
+const cartCount=document.getElementById('cartCount'); let cart=[];
+products.forEach((p,i)=>{
+const div=document.createElement('div');
+div.className="card p-2 mb-2";
+div.innerHTML=`
+<div class="d-flex justify-content-between align-items-center">
+<div><h6>${p.name}</h6><p>NT$${p.price}</p></div>
+<div class="d-flex align-items-center gap-1">
+<button onclick="changeQty(this,-1)">−</button>
+<input type="number" value="1" min="1" style="width:50px">
+<button onclick="changeQty(this,1)">＋</button>
+</div>
+<button class="btn btn-sweet btn-sm" onclick="addToCart(${i},this)">加入購物車</button>
+</div>`;
+productList.appendChild(div);
+});
+function changeQty(btn,n){const input=btn.parentElement.querySelector('input'); input.value=Math.max(1,parseInt(input.value)+n);}
+function addToCart(index,btn){
+const card=btn.closest('.card'); const qty=parseInt(card.querySelector('input').value);
+const product=products[index]; const exist=cart.find(item=>item.name===product.name);
+if(exist){exist.qty+=qty;}else{cart.push({name:product.name,price:product.price,qty:qty});}
+alert(product.name+" 已加入購物車"); updateCartDisplay();
+}
+function showCart(){document.getElementById('cartModal').style.display="flex"; updateCartDisplay();}
+function closeCart(){document.getElementById('cartModal').style.display="none";}
+function updateCartDisplay(){
+const cartItems=document.getElementById('cartItems'); cartItems.innerHTML="";
+let total=0; let count=0;
+cart.forEach((item,i)=>{
+const div=document.createElement('div'); div.className="cart-item";
+div.innerHTML=`<span>${item.name} x <input type="number" value="${item.qty}" min="1" onchange="updateQty(${i},this)"> </span>
+<span>NT$${item.price*item.qty}</span><button onclick="removeItem(${i})">刪除</button>`;
+cartItems.appendChild(div);
+total+=item.price*item.qty; count+=item.qty;
+});
+document.getElementById('cartTotal').innerText=total; cartCount.innerText=count;
+}
+function updateQty(index,input){cart[index].qty=parseInt(input.value); updateCartDisplay();}
+function removeItem(index){cart.splice(index,1); updateCartDisplay();}
+document.getElementById('orderForm').addEventListener('submit',function(e){
+e.preventDefault(); if(cart.length===0){alert("請先加入商品到購物車"); return;}
+const name=document.getElementById('customerName').value;
+const phone=document.getElementById('customerPhone').value;
+alert(`訂購成功！\n姓名：${name}\n電話：${phone}\n總價：NT$ ${cart.reduce((a,b)=>a+b.price*b.qty,0)}`);
+cart=[]; updateCartDisplay(); this.reset(); closeCart();
+});
+</script>
+
+</body>
+</html>
