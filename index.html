@@ -973,6 +973,11 @@
      * 10) 送出訂單（✅ 店家收單 + ✅ 客人通知）
      *********************/
     document.getElementById("submitOrderBtn").addEventListener("click", async ()=>{
+// ✅ 產生訂單編號（例如：YY20241219-8392）
+const orderId = "YY" +
+  new Date().toISOString().slice(0,10).replace(/-/g,"") +
+  "-" +
+  Math.floor(1000 + Math.random() * 9000);
       const btn = document.getElementById("submitOrderBtn");
 
       try{
@@ -1014,7 +1019,7 @@
         const subTotal = calcSubTotal();
         const shipFee = calcShippingFee(subTotal);
         const grandTotal = subTotal + shipFee;
-
+        // 計算金額後、送 EmailJS 之前
         const orderId = "FR" + Date.now();
         const createdAt = new Date().toLocaleString("zh-TW");
 
@@ -1022,7 +1027,6 @@
         const templateParams = {
           order_id: orderId,
           created_at: createdAt,
-
           name: custName,
           phone: custPhone,
           email: custEmail,                 // ✅ 客人收件用（客人模板 To Email 請填 {{email}}）
@@ -1043,6 +1047,25 @@
         btn.disabled = true;
         btn.textContent = "送出中…請稍等";
 
+await fetch("https://script.google.com/macros/s/AKfycbyItNEEEpidnYhvMNLx2QDCH8f3lRwYLXE9XQVaRVOsZ2PgifIRaCw7I5R2ju7xgmJU/exec", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    order_id: orderId,
+    created_at: createdAt,
+    name: custName,
+    phone: custPhone,
+    email: custEmail,
+    pickup_method: shipType === "delivery" ? "冷凍宅配" : "自取",
+    pickup_date: pickupDate,
+    address: addressText,
+    product: productList,
+    sub_total: subTotal,
+    total: grandTotal
+  })
+});
         // ✅ 先寄給店家（收件者在模板設定固定 yyrollcake@gmail.com）
         await emailjs.send(EMAILJS_SERVICE_ID, TEMPLATE_SHOP, templateParams);
 
