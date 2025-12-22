@@ -7,6 +7,7 @@
 
   <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
   <!-- Font -->
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;600;800&display=swap" rel="stylesheet">
 
@@ -55,7 +56,10 @@
       backdrop-filter: blur(10px);
       border-bottom: 1px solid rgba(0,0,0,.06);
     }
-    .brand{ font-weight: 800; letter-spacing: .5px; }
+    .brand{
+      font-weight: 800;
+      letter-spacing: .5px;
+    }
 
     .hero{
       position: relative;
@@ -73,7 +77,10 @@
       border-radius: 50%;
       background: rgba(255,255,255,.35);
     }
-    .hero h1{ font-weight: 800; line-height: 1.15; }
+    .hero h1{
+      font-weight: 800;
+      line-height: 1.15;
+    }
 
     .btn-sweet{
       background: var(--pink);
@@ -153,7 +160,10 @@
       padding: 0 6px;
     }
 
-    .section-title{ font-weight: 900; margin: 26px 0 14px; }
+    .section-title{
+      font-weight: 900;
+      margin: 26px 0 14px;
+    }
 
     .knowledge{
       background: rgba(255,255,255,.75);
@@ -164,7 +174,10 @@
     }
     .knowledge li{ margin: 6px 0; }
 
-    .mini-note{ font-size: 13px; opacity: .9; }
+    .mini-note{
+      font-size: 13px;
+      opacity: .9;
+    }
 
     .line{
       height: 1px;
@@ -191,9 +204,14 @@
     .cart-row .name{ font-weight: 900; }
     .cart-row .sub{ font-size: 13px; opacity:.85; }
 
-    .qty-box{ display:flex; align-items:center; gap:8px; }
+    .qty-box{
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
     .qty-box button{
-      width: 34px; height: 34px;
+      width: 34px;
+      height: 34px;
       border-radius: 10px;
       border: 1px solid rgba(0,0,0,.12);
       background: rgba(255,255,255,.90);
@@ -216,12 +234,22 @@
       border: 1px solid rgba(0,0,0,.06);
       box-shadow: 0 10px 18px rgba(0,0,0,.06);
     }
-    .total-box .big{ font-weight: 900; font-size: 18px; }
+    .total-box .big{
+      font-weight: 900;
+      font-size: 18px;
+    }
 
-    footer{ opacity: .85; font-size: 13px; }
+    footer{
+      opacity: .85;
+      font-size: 13px;
+    }
 
     .shake{ animation: pop .18s ease; }
-    @keyframes pop{ 0%{ transform: scale(1); } 50%{ transform: scale(1.10); } 100%{ transform: scale(1); } }
+    @keyframes pop{
+      0%{ transform: scale(1); }
+      50%{ transform: scale(1.10); }
+      100%{ transform: scale(1); }
+    }
 
     /* ✅ 加入購物車飛入動畫 */
     .fly-item{
@@ -242,19 +270,47 @@
       transition: transform .65s cubic-bezier(.2,.9,.25,1), opacity .65s ease;
       opacity: 1;
     }
+.price-wrap{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
 
-    .price-wrap{ display:flex; flex-direction:column; align-items:flex-end; gap:2px; }
-    .sale-badge{ background:#ffe1e8; color:#c44; font-size:12px; font-weight:900; padding:2px 8px; border-radius:999px; }
-    .price-old{ font-size:14px; color:#999; text-decoration:line-through; }
-    .price-new{ font-size:22px; font-weight:900; color:#c0392b; }
+.sale-badge{
+  background:#ffe1e8;
+  color:#c44;
+  font-size:12px;
+  font-weight:900;
+  padding:2px 8px;
+  border-radius:999px;
+}
 
-    .img-note{ font-size:12px; color:rgba(0,0,0,.55); text-align:center; margin-top:6px; }
+.price-old{
+  font-size:14px;
+  color:#999;
+  text-decoration: line-through;
+}
+
+.price-new{
+  font-size:22px;
+  font-weight:900;
+  color:#c0392b;
+}
+.img-note{
+  font-size: 12px;
+  color: rgba(0,0,0,.55);
+  text-align: center;
+  margin-top: 6px;
+}
   </style>
 </head>
 
 <body>
+  <!-- 泡泡背景 -->
   <div id="bubbles"></div>
 
+  <!-- Topbar -->
   <div class="topbar">
     <div class="container py-2 d-flex align-items-center justify-content-between">
       <div class="d-flex align-items-center gap-2">
@@ -271,6 +327,7 @@
   </div>
 
   <main class="container py-4" style="position:relative; z-index:1;">
+    <!-- Hero -->
     <section class="hero p-4 p-md-5 mb-4">
       <div class="row align-items-center g-3">
         <div class="col-md-7">
@@ -299,30 +356,35 @@
       </div>
     </section>
 
+    <!-- 菜單 -->
     <h2 id="menu" class="section-title">🌸 生乳捲菜單（9 種口味）</h2>
     <div class="row g-4">
-      <div class="col-md-4">
-        <div class="card-soft">
-          <div class="badge-cute">🐮 原味</div>
-          <img src="images/roll1.jpg" class="product-img" alt="原味生乳捲">
-          <div class="p-3">
-            <div class="d-flex align-items-start justify-content-between">
-              <div>
-                <div class="fw-bold fs-5">原味生乳捲</div>
-                <div class="mini-note">濃郁奶香，細緻滑順</div>
-              </div>
-              <div class="price-wrap">
-                <span class="sale-badge">優惠</span>
-                <span class="price-old">NT$ 390</span>
-                <span class="price-new">NT$ 330</span>
-              </div>
-            </div>
-            <button class="btn btn-sweet w-100 mt-3 addToCart" data-emoji="🐮"
-              data-id="vanilla" data-name="原味生乳捲" data-price="330">加入購物車</button>
-          </div>
+
+      <!-- 1 -->
+<div class="col-md-4">
+  <div class="card-soft">
+    <div class="badge-cute">🐮 原味</div>
+    <img src="images/roll1.jpg" class="product-img" alt="原味生乳捲">
+    <div class="p-3">
+      <div class="d-flex align-items-start justify-content-between">
+        <div>
+          <div class="fw-bold fs-5">原味生乳捲</div>
+          <div class="mini-note">濃郁奶香，細緻滑順</div>
+        </div>
+
+        <div class="price-wrap">
+          <span class="sale-badge">優惠</span>
+          <span class="price-old">NT$ 390</span>
+          <span class="price-new">NT$ 330</span>
         </div>
       </div>
 
+      <button class="btn btn-sweet w-100 mt-3 addToCart" data-emoji="🐮"
+        data-id="vanilla" data-name="原味生乳捲" data-price="330">加入購物車</button>
+    </div>
+  </div>
+</div>
+      <!-- 2 -->
       <div class="col-md-4">
         <div class="card-soft">
           <div class="badge-cute">🍫 巧克力</div>
@@ -334,10 +396,10 @@
                 <div class="mini-note">可可香濃，甜而不膩</div>
               </div>
               <div class="price-wrap">
-                <span class="sale-badge">優惠</span>
-                <span class="price-old">NT$ 390</span>
-                <span class="price-new">NT$ 330</span>
-              </div>
+  <span class="sale-badge">優惠</span>
+  <span class="price-old">NT$ 390</span>
+  <span class="price-new">NT$ 330</span>
+</div>
             </div>
             <button class="btn btn-sweet w-100 mt-3 addToCart" data-emoji="🍫"
               data-id="choco" data-name="巧克力生乳捲" data-price="330">加入購物車</button>
@@ -345,6 +407,7 @@
         </div>
       </div>
 
+      <!-- 3 -->
       <div class="col-md-4">
         <div class="card-soft">
           <div class="badge-cute">🍵 抹茶</div>
@@ -356,10 +419,10 @@
                 <div class="mini-note">日式回甘，茶香迷人</div>
               </div>
               <div class="price-wrap">
-                <span class="sale-badge">優惠</span>
-                <span class="price-old">NT$ 390</span>
-                <span class="price-new">NT$ 330</span>
-              </div>
+  <span class="sale-badge">優惠</span>
+  <span class="price-old">NT$ 390</span>
+  <span class="price-new">NT$ 330</span>
+</div>
             </div>
             <button class="btn btn-sweet w-100 mt-3 addToCart" data-emoji="🍵"
               data-id="matcha" data-name="抹茶生乳捲" data-price="330">加入購物車</button>
@@ -367,6 +430,7 @@
         </div>
       </div>
 
+      <!-- ✅ 新增 4：焦糖 -->
       <div class="col-md-4">
         <div class="card-soft">
           <div class="badge-cute">🍮 焦糖</div>
@@ -378,10 +442,10 @@
                 <div class="mini-note">焦糖香氣，甜甜療癒</div>
               </div>
               <div class="price-wrap">
-                <span class="sale-badge">優惠</span>
-                <span class="price-old">NT$ 450</span>
-                <span class="price-new">NT$ 360</span>
-              </div>
+  <span class="sale-badge">優惠</span>
+  <span class="price-old">NT$ 450</span>
+  <span class="price-new">NT$ 360</span>
+</div>
             </div>
             <button class="btn btn-sweet w-100 mt-3 addToCart" data-emoji="🍮"
               data-id="caramel" data-name="焦糖生乳捲" data-price="360">加入購物車</button>
@@ -389,6 +453,7 @@
         </div>
       </div>
 
+      <!-- ✅ 新增 5：卡士達 -->
       <div class="col-md-4">
         <div class="card-soft">
           <div class="badge-cute">🥚 卡士達</div>
@@ -399,11 +464,11 @@
                 <div class="fw-bold fs-5">卡士達生乳捲</div>
                 <div class="mini-note">香草卡士達，滑順濃厚</div>
               </div>
-              <div class="price-wrap">
-                <span class="sale-badge">優惠</span>
-                <span class="price-old">NT$ 450</span>
-                <span class="price-new">NT$ 360</span>
-              </div>
+               <div class="price-wrap">
+  <span class="sale-badge">優惠</span>
+  <span class="price-old">NT$ 450</span>
+  <span class="price-new">NT$ 360</span>
+</div>
             </div>
             <button class="btn btn-sweet w-100 mt-3 addToCart" data-emoji="🥚"
               data-id="custard" data-name="卡士達生乳捲" data-price="360">加入購物車</button>
@@ -411,6 +476,7 @@
         </div>
       </div>
 
+      <!-- ✅ 新增 6：泰奶 -->
       <div class="col-md-4">
         <div class="card-soft">
           <div class="badge-cute">🧋 泰奶</div>
@@ -421,11 +487,11 @@
                 <div class="fw-bold fs-5">泰奶生乳捲</div>
                 <div class="mini-note">茶香奶香，超級耐喝系</div>
               </div>
-              <div class="price-wrap">
-                <span class="sale-badge">優惠</span>
-                <span class="price-old">NT$ 450</span>
-                <span class="price-new">NT$ 360</span>
-              </div>
+               <div class="price-wrap">
+  <span class="sale-badge">優惠</span>
+  <span class="price-old">NT$ 450</span>
+  <span class="price-new">NT$ 360</span>
+</div>
             </div>
             <button class="btn btn-sweet w-100 mt-3 addToCart" data-emoji="🧋"
               data-id="thaitea" data-name="泰奶生乳捲" data-price="360">加入購物車</button>
@@ -433,6 +499,8 @@
         </div>
       </div>
 
+
+      <!-- 7 -->
       <div class="col-md-4">
         <div class="card-soft">
           <div class="badge-cute">☕️ 提拉米蘇</div>
@@ -443,11 +511,11 @@
                 <div class="fw-bold fs-5">提拉米蘇生乳捲</div>
                 <div class="mini-note">咖啡可可香，層次濃郁</div>
               </div>
-              <div class="price-wrap">
-                <span class="sale-badge">優惠</span>
-                <span class="price-old">NT$ 550</span>
-                <span class="price-new">NT$ 460</span>
-              </div>
+             <div class="price-wrap">
+  <span class="sale-badge">優惠</span>
+  <span class="price-old">NT$ 550</span>
+  <span class="price-new">NT$ 460</span>
+</div>
             </div>
             <button class="btn btn-sweet w-100 mt-3 addToCart" data-emoji="☕️"
               data-id="tiramisu" data-name="提拉米蘇生乳捲" data-price="460">加入購物車</button>
@@ -455,6 +523,7 @@
         </div>
       </div>
 
+     <!-- 8 -->
       <div class="col-md-4">
         <div class="card-soft">
           <div class="badge-cute">🍠 芋泥</div>
@@ -465,11 +534,11 @@
                 <div class="fw-bold fs-5">芋泥生乳捲</div>
                 <div class="mini-note">香甜芋泥，綿密不膩</div>
               </div>
-              <div class="price-wrap">
-                <span class="sale-badge">優惠</span>
-                <span class="price-old">NT$ 550</span>
-                <span class="price-new">NT$ 460</span>
-              </div>
+               <div class="price-wrap">
+  <span class="sale-badge">優惠</span>
+  <span class="price-old">NT$ 550</span>
+  <span class="price-new">NT$ 460</span>
+</div>
             </div>
             <button class="btn btn-sweet w-100 mt-3 addToCart" data-emoji="🍠"
               data-id="taro" data-name="芋泥生乳捲" data-price="460">加入購物車</button>
@@ -477,6 +546,7 @@
         </div>
       </div>
 
+      <!-- 9 -->
       <div class="col-md-4">
         <div class="card-soft">
           <div class="badge-cute">🍓 草莓</div>
@@ -487,19 +557,18 @@
                 <div class="fw-bold fs-5">草莓生乳捲</div>
                 <div class="mini-note">酸甜清爽，幸福爆擊</div>
               </div>
-              <div class="price-wrap">
-                <span class="sale-badge">優惠</span>
-                <span class="price-old">NT$ 550</span>
-                <span class="price-new">NT$ 499</span>
-              </div>
+             <div class="price-wrap">
+  <span class="sale-badge">優惠</span>
+  <span class="price-old">NT$ 550</span>
+  <span class="price-new">NT$ 499</span>
+</div>
             </div>
             <button class="btn btn-sweet w-100 mt-3 addToCart" data-emoji="🍓"
               data-id="strawberry" data-name="草莓生乳捲" data-price="499">加入購物車</button>
           </div>
         </div>
       </div>
-    </div>
-
+    <!-- 保存小知識 -->
     <h2 id="tips" class="section-title">❄️ 生乳捲保存小知識</h2>
     <div class="knowledge">
       <ul class="mb-0">
@@ -515,6 +584,7 @@
     </footer>
   </main>
 
+  <!-- 購物車 Offcanvas -->
   <div class="offcanvas offcanvas-end" tabindex="-1" id="cartCanvas" aria-labelledby="cartCanvasLabel">
     <div class="offcanvas-header">
       <h5 class="offcanvas-title fw-bold" id="cartCanvasLabel">🛒 購物車</h5>
@@ -532,6 +602,7 @@
 
       <div class="line"></div>
 
+      <!-- 取貨/宅配 -->
       <div class="total-box mb-3">
         <div class="fw-bold mb-2">🚚 取貨方式</div>
 
@@ -561,6 +632,7 @@
         </div>
       </div>
 
+      <!-- 訂購人資料 -->
       <div class="total-box mb-3">
         <div class="fw-bold mb-2">🧾 訂購人資料</div>
         <input type="text" class="form-control mb-2" id="custName" placeholder="訂購人姓名（必填）" required>
@@ -568,6 +640,7 @@
         <input type="email" class="form-control" id="custEmail" placeholder="訂購人 Email（必填：用來寄確認信）" required>
       </div>
 
+      <!-- 金額區 -->
       <div class="total-box mb-3">
         <div class="d-flex justify-content-between">
           <div>小計</div>
@@ -583,10 +656,11 @@
           <div class="big">NT$ <span id="grandTotal">0</span></div>
         </div>
         <div class="mini-note mt-2">
-          ※ 試算表寫入成功後才會寄 Email（避免訂單不成立還寄信）。
+          ※ 送出訂單後，客人會收到 Email 通知；店家也會收到訂單內容。
         </div>
       </div>
 
+      <!-- 付款資訊（銀行轉帳） -->
       <div class="total-box mb-3">
         <div class="fw-bold mb-2">🏦 付款方式：銀行轉帳</div>
         <div class="mini-note">
@@ -598,29 +672,48 @@
       </div>
 
       <button class="btn btn-sweet w-100" id="submitOrderBtn">送出訂單</button>
-
-      <div class="text-center mt-3">
-        <a href="https://lin.ee/Bk8uDSG" target="_blank"
-           class="btn btn-success d-inline-flex align-items-center gap-2"
-           style="border-radius:999px;">
-          <img src="images/line.png" alt="聯絡官方 LINE" style="width:28px;height:28px;border-radius:50%;">
-          聯絡官方 LINE
-        </a>
-      </div>
-
+<div class="text-center mt-3">
+  <a
+    href="https://lin.ee/Bk8uDSG"
+    target="_blank"
+    class="btn btn-success d-inline-flex align-items-center gap-2"
+    style="border-radius:999px;"
+  >
+    <img
+      src="images/line.png"
+      alt="聯絡官方 LINE"
+      style="width:28px;height:28px;border-radius:50%;"
+    >
+    聯絡官方 LINE
+  </a>
+</div>
       <div class="mini-note text-center mt-2" id="sendHint" style="opacity:.85;"></div>
+<div class="text-center mt-3" id="afterOrderContact" style="display:none;">
+  <div class="fw-bold mb-2">📩 下單完成後歡迎聯絡我們</div>
 
-      <div class="text-center mt-3" id="afterOrderContact" style="display:none;">
-        <div class="fw-bold mb-2">📩 下單完成後歡迎聯絡我們</div>
-        <a id="lineContactBtn"
-           href="https://lin.ee/Bk8uDSG"
-           target="_blank"
-           style="display:inline-flex;align-items:center;gap:10px;background:#06C755;color:#fff;padding:10px 18px;border-radius:999px;font-weight:900;text-decoration:none;box-shadow:0 6px 14px rgba(0,0,0,.15);">
-          <img src="images/line.png" style="width:26px;height:26px;border-radius:50%;object-fit:cover;">
-          聯絡官方 LINE
-        </a>
-        <div class="mini-note mt-2">如需確認取貨時間、付款或訂單內容，請主動聯絡我們</div>
-      </div>
+ <a id="lineContactBtn"
+   href="https://lin.ee/Bk8uDSG"
+   target="_blank"
+     style="
+       display:inline-flex;
+       align-items:center;
+       gap:10px;
+       background:#06C755;
+       color:#fff;
+       padding:10px 18px;
+       border-radius:999px;
+       font-weight:900;
+       text-decoration:none;
+       box-shadow:0 6px 14px rgba(0,0,0,.15);
+     ">
+    <img src="images/line.png">
+    聯絡官方 LINE
+  </a>
+
+  <div class="mini-note mt-2">
+    如需確認取貨時間、付款或訂單內容，請主動聯絡我們
+  </div>
+</div>
 
       <div class="text-center mt-3">
         <button class="btn btn-outline-secondary btn-sm" id="clearCartBtn">清空購物車</button>
@@ -628,47 +721,67 @@
     </div>
   </div>
 
+  <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- EmailJS -->
   <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 
   <script>
-    async function postToSheet(payload){
-      const url = "https://script.google.com/macros/s/AKfycbyqYGNSN9pRZMcfdoxRzE3FPs3GFdFzaVoINeklnECajnhCDR60F1sYFtCvtWglhk4nsA/exec";
-      const res = await fetch(url, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload)
-      });
-      if(!res.ok) throw new Error("寫入試算表失敗（HTTP " + res.status + "）");
-      const data = await res.json().catch(()=>null);
-      if(!data || data.success !== true) throw new Error("試算表回傳失敗");
-      return data;
+
+  // ✅【① 放在這裡】寫入 Google 試算表的函式
+  async function postToSheet(payload){
+    const url = "https://script.google.com/macros/s/AKfycbyqYGNSN9pRZMcfdoxRzE3FPs3GFdFzaVoINeklnECajnhCDR60F1sYFtCvtWglhk4nsA/exec";
+
+    const res = await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    });
+
+    if(!res.ok){
+      throw new Error("寫入試算表失敗（HTTP " + res.status + "）");
     }
 
-    (function makeBubbles(){
-      const c = document.getElementById("bubbles");
-      if(!c) return;
-      for(let i=0;i<22;i++){
-        const b = document.createElement("div");
-        b.className = "bubble";
-        const size = Math.random()*32 + 18;
-        b.style.width = size + "px";
-        b.style.height = size + "px";
-        b.style.left = (Math.random()*100) + "%";
-        b.style.background = `rgba(255,157,181,${Math.random()*0.55 + 0.15})`;
-        b.style.animationDuration = (Math.random()*6 + 6) + "s";
-        b.style.animationDelay = (-Math.random()*10) + "s";
-        c.appendChild(b);
-      }
-    })();
+    const data = await res.json();
+    if(!data || data.success !== true){
+      throw new Error("試算表回傳失敗");
+    }
 
-    emailjs.init("lTjQlr749IV9zSp0c");
-    const EMAILJS_SERVICE_ID = "service_mcvontk";
-    const TEMPLATE_SHOP = "template_6ukpgyb";
-    const TEMPLATE_CLIENT = "template_wdfonnc";
+    return data;
+  }
+    /*********************
+     * 0) 泡泡背景
+     *********************/
+   (function makeBubbles(){
+  const c = document.getElementById("bubbles");
+  for(let i=0;i<22;i++){
+    const b = document.createElement("div");
+    b.className = "bubble";
+    const size = Math.random()*32 + 18;
+    b.style.width = size + "px";
+    b.style.height = size + "px";
+    b.style.left = (Math.random()*100) + "%";
+    b.style.background = `rgba(255,157,181,${Math.random()*0.55 + 0.15})`;
+    b.style.animationDuration = (Math.random()*6 + 6) + "s";
+    b.style.animationDelay = (-Math.random()*10) + "s";
+    c.appendChild(b);
+  }
+})();
 
-    const DELIVERY_FEE = 160;
-    const FREE_SHIP_OVER = 2000;
+    /*********************
+     * 1) 你的 EmailJS 設定（已填好）
+     *********************/
+    emailjs.init("lTjQlr749IV9zSp0c");               // ✅ Public Key
+    const EMAILJS_SERVICE_ID = "service_mcvontk";    // ✅ Service ID
+    const TEMPLATE_SHOP = "template_6ukpgyb";        // ✅ 店家收單模板（收件者請在模板設定填 yyrollcake@gmail.com）
+    const TEMPLATE_CLIENT = "template_wdfonnc";      // ✅ 客人通知模板（收件者請在模板設定填 {{email}}）
+
+    /*********************
+     * 2) 運費規則（你可改）
+     *********************/
+    const DELIVERY_FEE = 160;      // 宅配未滿免運門檻運費
+    const FREE_SHIP_OVER = 2000;   // 滿多少免運
     const PICKUP_ADDR = "新竹市香山區（自取）";
     const BANK_INFO =
 `銀行名稱：中國信託
@@ -676,8 +789,11 @@
 帳號：901565794604
 戶名：陳易凌`;
 
+    /*********************
+     * 3) 購物車資料（localStorage）
+     *********************/
     const CART_KEY = "freshroll_cart_v2";
-    let cart = loadCart();
+    let cart = loadCart(); // { id: {name, price, qty} }
 
     function loadCart(){
       try{ return JSON.parse(localStorage.getItem(CART_KEY)) || {}; }
@@ -685,27 +801,41 @@
     }
     function saveCart(){ localStorage.setItem(CART_KEY, JSON.stringify(cart)); }
 
+    /*********************
+     * 4) 小工具
+     *********************/
     function escapeHtml(str){
-      return String(str).replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;").replaceAll("'","&#039;");
+      return String(str)
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
     }
     function getShipType(){
       const r = document.querySelector('input[name="shipType"]:checked');
       return r ? r.value : "pickup";
     }
-    function countItems(){ return Object.values(cart).reduce((sum, it)=> sum + it.qty, 0); }
-    function calcSubTotal(){ return Object.values(cart).reduce((sum, it)=> sum + it.price * it.qty, 0); }
+    function countItems(){
+      return Object.values(cart).reduce((sum, it)=> sum + it.qty, 0);
+    }
+    function calcSubTotal(){
+      return Object.values(cart).reduce((sum, it)=> sum + it.price * it.qty, 0);
+    }
     function calcShippingFee(subTotal){
       const type = getShipType();
       if(type !== "delivery") return 0;
       if(subTotal >= FREE_SHIP_OVER) return 0;
       return DELIVERY_FEE;
     }
-    function isValidEmail(email){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email); }
-    function isValidPhone(phone){ return /^09\d{8}$/.test(phone); }
 
+    /*********************
+     * 5) ✅ 加入購物車飛入動畫
+     *********************/
     function flyToCart(startEl, emoji){
       const cartBtn = document.getElementById("cartBtn");
       if(!startEl || !cartBtn) return;
+
       const s = startEl.getBoundingClientRect();
       const t = cartBtn.getBoundingClientRect();
 
@@ -714,16 +844,21 @@
       flyer.textContent = emoji || "🧁";
       document.body.appendChild(flyer);
 
+      // 起點：按鈕中心
       const startX = s.left + s.width/2;
       const startY = s.top + s.height/2;
       flyer.style.left = startX + "px";
       flyer.style.top  = startY + "px";
 
+      // 讓瀏覽器先畫出起點，再做動畫
       requestAnimationFrame(()=>{
+        // 終點：購物車按鈕中心
         const endX = t.left + t.width/2;
         const endY = t.top + t.height/2;
+
         const dx = endX - startX;
         const dy = endY - startY;
+
         flyer.style.transform = `translate(calc(-50% + ${dx}px), calc(-50% + ${dy}px)) scale(0.6)`;
         flyer.style.opacity = "0.15";
       });
@@ -735,6 +870,41 @@
       }, { once:true });
     }
 
+    /*********************
+     * 6) 加入購物車
+     *********************/
+    document.querySelectorAll(".addToCart").forEach(btn=>{
+      btn.addEventListener("click", ()=>{
+        const id = btn.dataset.id;
+        const name = btn.dataset.name;
+        const price = parseInt(btn.dataset.price,10);
+        const emoji = btn.dataset.emoji || "🧁";
+
+        if(!cart[id]) cart[id] = { name, price, qty: 1 };
+        else cart[id].qty += 1;
+
+        saveCart();
+        renderCart();
+
+        // ✅ 飛入動畫
+        flyToCart(btn, emoji);
+      });
+    });
+
+    /*********************
+     * 7) 取貨方式切換（自取/宅配）
+     *********************/
+    const addressBox = document.getElementById("addressBox");
+    document.querySelectorAll('input[name="shipType"]').forEach(r=>{
+      r.addEventListener("change", ()=>{
+        addressBox.style.display = (getShipType() === "delivery") ? "block" : "none";
+        renderCart();
+      });
+    });
+
+    /*********************
+     * 8) 購物車渲染 + 運費計算
+     *********************/
     function renderCart(){
       const cartList = document.getElementById("cartList");
       const cartEmpty = document.getElementById("cartEmpty");
@@ -771,10 +941,23 @@
           const delBtn   = row.querySelectorAll("button")[2];
           const qtyInput = row.querySelector("input");
 
-          minusBtn.addEventListener("click", ()=>{ cart[id].qty = Math.max(1, cart[id].qty - 1); saveCart(); renderCart(); });
-          plusBtn.addEventListener("click",  ()=>{ cart[id].qty += 1; saveCart(); renderCart(); });
-          qtyInput.addEventListener("input", ()=>{ const v = parseInt(qtyInput.value,10); cart[id].qty = isNaN(v) ? 1 : Math.max(1, v); saveCart(); renderCart(); });
-          delBtn.addEventListener("click",   ()=>{ delete cart[id]; saveCart(); renderCart(); });
+          minusBtn.addEventListener("click", ()=>{
+            cart[id].qty = Math.max(1, cart[id].qty - 1);
+            saveCart(); renderCart();
+          });
+          plusBtn.addEventListener("click", ()=>{
+            cart[id].qty += 1;
+            saveCart(); renderCart();
+          });
+          qtyInput.addEventListener("input", ()=>{
+            const v = parseInt(qtyInput.value,10);
+            cart[id].qty = isNaN(v) ? 1 : Math.max(1, v);
+            saveCart(); renderCart();
+          });
+          delBtn.addEventListener("click", ()=>{
+            delete cart[id];
+            saveCart(); renderCart();
+          });
 
           cartList.appendChild(row);
         });
@@ -798,181 +981,199 @@
       }
     }
 
-    document.addEventListener("DOMContentLoaded", ()=>{
-      const addressBox = document.getElementById("addressBox");
-      document.querySelectorAll('input[name="shipType"]').forEach(r=>{
-        r.addEventListener("change", ()=>{
-          addressBox.style.display = (getShipType() === "delivery") ? "block" : "none";
-          renderCart();
-        });
-      });
+    /*********************
+     * 9) 清空購物車
+     *********************/
+    document.getElementById("clearCartBtn").addEventListener("click", ()=>{
+      if(!confirm("確定要清空購物車嗎？")) return;
+      cart = {};
+      saveCart();
+      renderCart();
+    });
 
-      document.querySelectorAll(".addToCart").forEach(btn=>{
-        btn.addEventListener("click", ()=>{
-          const id = btn.dataset.id;
-          const name = btn.dataset.name;
-          const price = parseInt(btn.dataset.price,10);
-          const emoji = btn.dataset.emoji || "🧁";
+    /*********************
+     * 10) 送出訂單（✅ 店家收單 + ✅ 客人通知）
+     *********************/
+    document.getElementById("submitOrderBtn").addEventListener("click", async ()=>{
+      const btn = document.getElementById("submitOrderBtn");
 
-          if(!cart[id]) cart[id] = { name, price, qty: 1 };
-          else cart[id].qty += 1;
+      try{
+        if(Object.keys(cart).length === 0){
+          alert("購物車是空的，請先加入商品喔～");
+          return;
+        }
 
-          saveCart();
-          renderCart();
-          flyToCart(btn, emoji);
-        });
-      });
+        const custName  = document.getElementById("custName").value.trim();
+        const custPhone = document.getElementById("custPhone").value.trim();
+        const custEmail = document.getElementById("custEmail").value.trim(); // ✅ 必填
 
-      document.getElementById("clearCartBtn").addEventListener("click", ()=>{
-        if(!confirm("確定要清空購物車嗎？")) return;
+        if(!custName || !custPhone || !custEmail){
+          alert("請填寫：訂購人姓名 / 電話 / Email（都必填）");
+          return;
+        }
+
+// ✅ Email 格式防呆（避免退信）
+function isValidEmail(email){
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+// ✅ 電話格式防呆（台灣手機：09 開頭共 10 碼）
+function isValidPhone(phone){
+  return /^09\d{8}$/.test(phone);
+}
+
+// ❌ 電話格式錯誤
+if(!isValidPhone(custPhone)){
+  alert("電話格式錯誤，請輸入 09 開頭的 10 碼（例：0912345678）");
+  return;
+}
+
+// ❌ Email 格式錯誤
+if(!isValidEmail(custEmail)){
+  alert("Email 格式錯誤，請確認格式是否正確（例：abc@gmail.com）");
+  return;
+}
+
+        const shipType = getShipType();
+        const pickupDate = document.getElementById("pickupDate").value || "未填（待確認）";
+
+        // 宅配資料（宅配就必填）
+        let addressText = PICKUP_ADDR;
+        if(shipType === "delivery"){
+          const n = document.getElementById("addressName").value.trim();
+          const p = document.getElementById("addressPhone").value.trim();
+          const a = document.getElementById("addressFull").value.trim();
+          if(!n || !p || !a){
+            alert("宅配請填寫：收件人姓名 / 電話 / 完整地址");
+            return;
+          }
+          addressText = `收件人：${n}\n電話：${p}\n地址：${a}`;
+        }
+
+        // 商品清單文字
+        const productList = Object.values(cart)
+          .map(it => `${it.name} x ${it.qty}（單價 ${it.price}）`)
+          .join("\n");
+
+        const subTotal = calcSubTotal();
+        const shipFee = calcShippingFee(subTotal);
+        const grandTotal = subTotal + shipFee;
+
+        const orderId = "YY" + Date.now();
+        const createdAt = new Date().toLocaleString("zh-TW");
+
+        // ✅ 這些 key 要對上你 EmailJS 模板裡的 {{變數}}
+        const templateParams = {
+          order_id: orderId,
+          created_at: createdAt,
+
+          name: custName,
+          phone: custPhone,
+          email: custEmail,                 // ✅ 客人收件用（客人模板 To Email 請填 {{email}}）
+
+          pickup_method: (shipType === "delivery") ? "冷凍宅配" : "自取（新竹市香山區）",
+          pickup_date: pickupDate,
+          address: addressText,
+
+          product: productList,
+
+          sub_total: String(subTotal),
+          shipping_fee: String(shipFee),
+          total: String(grandTotal),
+
+          bank_info: BANK_INFO
+        };
+
+        btn.disabled = true;
+        btn.textContent = "送出中…請稍等";
+
+        // ① 先寫入試算表
+        await postToSheet(templateParams);
+
+        // ② 再寄給店家
+        await emailjs.send(EMAILJS_SERVICE_ID, TEMPLATE_SHOP, templateParams);
+
+        // ③ 再寄給客人
+        await emailjs.send(EMAILJS_SERVICE_ID, TEMPLATE_CLIENT, templateParams);
+
+       
+
+        alert("✅ 下單成功！您與店家都已收到 Email 通知～下單完再麻煩私訊官方賴提供訂單編號謝謝！");
+document.getElementById("afterOrderContact").style.display = "block";
+
+// 🔗 組 LINE 預填訊息（帶訂單編號）
+const lineMessage = `您好，我剛在官網下單
+訂單編號：${orderId}
+想確認訂單內容，謝謝 🙏`;
+
+// LINE 官方帳聊天連結（帶文字）
+const lineUrl =
+  "https://line.me/R/oaMessage/@112bxcsr/?" +
+  encodeURIComponent(lineMessage);
+
+// 套用到按鈕
+const lineBtn = document.getElementById("lineContactBtn");
+if (lineBtn) {
+  lineBtn.href = lineUrl;
+}
+
+        // 送出後清空購物車
         cart = {};
         saveCart();
         renderCart();
-      });
 
-      document.getElementById("submitOrderBtn").addEventListener("click", async ()=>{
-        const btn = document.getElementById("submitOrderBtn");
+        // 清空欄位（你要保留也可以）
+        document.getElementById("pickupDate").value = "";
+        document.getElementById("addressName").value = "";
+        document.getElementById("addressPhone").value = "";
+        document.getElementById("addressFull").value = "";
 
-        try{
-          if(Object.keys(cart).length === 0){
-            alert("購物車是空的，請先加入商品喔～");
-            return;
-          }
-
-          const custName  = document.getElementById("custName").value.trim();
-          const custPhone = document.getElementById("custPhone").value.trim();
-          const custEmail = document.getElementById("custEmail").value.trim();
-
-          if(!custName || !custPhone || !custEmail){
-            alert("請填寫：訂購人姓名 / 電話 / Email（都必填）");
-            return;
-          }
-          if(!isValidPhone(custPhone)){
-            alert("電話格式錯誤，請輸入 09 開頭的 10 碼（例：0912345678）");
-            return;
-          }
-          if(!isValidEmail(custEmail)){
-            alert("Email 格式錯誤，請確認格式是否正確（例：abc@gmail.com）");
-            return;
-          }
-
-          const shipType = getShipType();
-          const pickupDate = document.getElementById("pickupDate").value || "未填（待確認）";
-
-          let addressText = PICKUP_ADDR;
-          if(shipType === "delivery"){
-            const n = document.getElementById("addressName").value.trim();
-            const p = document.getElementById("addressPhone").value.trim();
-            const a = document.getElementById("addressFull").value.trim();
-            if(!n || !p || !a){
-              alert("宅配請填寫：收件人姓名 / 電話 / 完整地址");
-              return;
-            }
-            if(!isValidPhone(p)){
-              alert("收件人電話格式錯誤，請輸入 09 開頭的 10 碼");
-              return;
-            }
-            addressText = `收件人：${n}\n電話：${p}\n地址：${a}`;
-          }
-
-          const productList = Object.values(cart)
-            .map(it => `${it.name} x ${it.qty}（單價 ${it.price}）`)
-            .join("\n");
-
-          const subTotal = calcSubTotal();
-          const shipFee = calcShippingFee(subTotal);
-          const grandTotal = subTotal + shipFee;
-
-          const dateStr = new Date().toISOString().slice(0,10).replace(/-/g,"");
-          const rand = Math.floor(1000 + Math.random()*9000);
-          const orderId = `YY${dateStr}-${rand}`;
-          const createdAt = new Date().toLocaleString("zh-TW");
-
-          const templateParams = {
-            order_id: orderId,
-            created_at: createdAt,
-            name: custName,
-            phone: custPhone,
-            email: custEmail,
-            pickup_method: (shipType === "delivery") ? "冷凍宅配" : "自取（新竹市香山區）",
-            pickup_date: pickupDate,
-            address: addressText,
-            product: productList,
-            sub_total: String(subTotal),
-            shipping_fee: String(shipFee),
-            total: String(grandTotal),
-            bank_info: BANK_INFO
-          };
-
-          btn.disabled = true;
-          btn.textContent = "送出中…請稍等";
-
-          // ✅ 先寫試算表（失敗就不寄信）
-          await postToSheet({
-            order_id: templateParams.order_id,
-            created_at: templateParams.created_at,
-            name: templateParams.name,
-            phone: templateParams.phone,
-            email: templateParams.email,
-            pickup_method: templateParams.pickup_method,
-            pickup_date: templateParams.pickup_date,
-            address: templateParams.address,
-            product: templateParams.product,
-            sub_total: templateParams.sub_total,
-            shipping_fee: templateParams.shipping_fee,
-            total: templateParams.total
-          });
-
-          // ✅ 試算表成功 → 寄信
-          await emailjs.send(EMAILJS_SERVICE_ID, TEMPLATE_SHOP, templateParams);
-          await emailjs.send(EMAILJS_SERVICE_ID, TEMPLATE_CLIENT, templateParams);
-
-          alert("✅ 下單成功！客人與店家都已收到 Email 通知～下單完再麻煩私訊官方賴提供訂單編號謝謝！");
-          document.getElementById("afterOrderContact").style.display = "block";
-
-          const lineMessage = `您好，我剛在官網下單\n訂單編號：${orderId}\n想確認訂單內容，謝謝 🙏`;
-          const lineUrl = "https://line.me/R/oaMessage/@112bxcsr/?" + encodeURIComponent(lineMessage);
-          const lineBtn = document.getElementById("lineContactBtn");
-          if(lineBtn) lineBtn.href = lineUrl;
-
-          cart = {};
-          saveCart();
-          renderCart();
-
-          document.getElementById("pickupDate").value = "";
-          document.getElementById("addressName").value = "";
-          document.getElementById("addressPhone").value = "";
-          document.getElementById("addressFull").value = "";
-          document.getElementById("custName").value = "";
-          document.getElementById("custPhone").value = "";
-          document.getElementById("custEmail").value = "";
-
-        }catch(err){
-          console.error(err);
-          alert("❌ 訂單未成立（寫入試算表或寄信失敗）。請再試一次，成功後才會寄通知。");
-        }finally{
-          btn.disabled = false;
-          btn.textContent = "送出訂單";
-        }
-      });
-
-      renderCart();
-
-      (function addImageNotes(){
-        document.querySelectorAll(".product-img").forEach(img=>{
-          const next = img.nextElementSibling;
-          if(next && next.classList.contains("img-note")) return;
-          img.insertAdjacentHTML("afterend", "<div class='img-note'>圖片僅供參考</div>");
-        });
-      })();
+            } catch (err) {
+        console.error(err);
+        alert("❌ 送出失敗：\n" + (err && err.message ? err.message : err));
+      } finally {
+        btn.disabled = false;
+        btn.textContent = "送出訂單";
+      }
     });
-  </script>
 
-  <a href="https://lin.ee/Bk8uDSG" target="_blank" aria-label="加入 LINE 官方帳號"
-     style="position: fixed; right: 20px; bottom: 20px; z-index: 9999;">
-    <img src="images/line.png" alt="加入 LINE 官方帳號"
-         style="width:64px;height:64px;border-radius:50%;object-fit:cover;box-shadow:0 4px 12px rgba(0,0,0,0.25);transition: transform .2s ease;"
-         onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'">
-  </a>
+   // 初次渲染
+renderCart();
+
+// ✅ 自動在每張商品圖下面加「圖片僅供參考」
+(function addImageNotes(){
+  document.querySelectorAll(".product-img").forEach(img=>{
+    const next = img.nextElementSibling;
+    if(next && next.classList.contains("img-note")) return; // 避免重複
+    img.insertAdjacentHTML(
+      "afterend",
+      "<div class='img-note'>圖片僅供參考</div>"
+    );
+  });
+})();
+  </script>
+<!-- 右下角 LINE 浮動按鈕 -->
+<a href="https://lin.ee/Bk8uDSG"
+   target="_blank"
+   aria-label="加入 LINE 官方帳號"
+   style="
+     position: fixed;
+     right: 20px;
+     bottom: 20px;
+     z-index: 9999;
+   ">
+  <img src="images/line.png"
+       alt="加入 LINE 官方帳號"
+       style="
+         width:64px;
+         height:64px;
+         border-radius:50%;
+         object-fit:cover;
+         box-shadow:0 4px 12px rgba(0,0,0,0.25);
+         transition: transform .2s ease;
+       "
+       onmouseover="this.style.transform='scale(1.08)'"
+       onmouseout="this.style.transform='scale(1)'">
+</a>
 </body>
 </html>
