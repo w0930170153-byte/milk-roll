@@ -1092,13 +1092,14 @@ async function postToSheet(payload) {
     throw new Error("寫入試算表失敗（HTTP " + res.status + "）");
   }
 
-  const data = await res.json();
+  const data = await res.json().catch(() => null);
   if (!data || data.success !== true) {
-    throw new Error("寫入試算表失敗（Apps Script 回傳失敗）");
+    throw new Error("寫入試算表失敗（回傳格式錯誤）");
   }
 
   return data;
 }
+
 
   // ⚠️ 不要用 no-cors，因為你會拿不到成功/失敗結果
   const res = await fetch(url, {
