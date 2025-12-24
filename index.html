@@ -303,54 +303,6 @@
   text-align: center;
   margin-top: 6px;
 }
-
-/* 📱 手機版：一排 3 個商品（像全聯） */
-@media (max-width: 768px){
-
-  /* 菜單改成 3 欄 */
-  #menu + .row{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
-  }
-
-  /* 卡片縮小一點 */
-  .card-soft{
-    border-radius: 12px;
-  }
-
-  /* 圖片變正方形，省高度 */
-  .product-img{
-    aspect-ratio: 1 / 1;
-  }
-
-  /* 商品名稱縮小 */
-  .card-soft .fw-bold{
-    font-size: 14px;
-    line-height: 1.2;
-  }
-
-  /* 價格縮小 */
-  .price-new{
-    font-size: 16px;
-  }
-  .price-old{
-    font-size: 12px;
-  }
-
-  /* 加入購物車按鈕變扁 */
-  .btn-sweet{
-    padding: 5px 6px;
-    font-size: 13px;
-  }
-
-  /* 圖片僅供參考 */
-  .img-note{
-    font-size: 11px;
-    margin-top: 4px;
-  }
-}
-
   </style>
 </head>
 
